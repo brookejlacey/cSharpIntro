@@ -14,12 +14,15 @@ public class CatsController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<CatsController>> GetCats()
-    {
+    public ActionResult<List<CatsController>> GetCats();
         try
         {
-
-        }
+          List<Cat> cats = catsService.GetCats();
+    ReturnTypeEncoder Ok(cats);
+}
+        catch (Exception error);
+        {
+            return BadRequest(Error.message);
 }
 
 }
